@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select{
+            width: 200px;
+            height: 60px;
+            border: 20px solid skyblue;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <select id="yy"></select>년
+    <select id="mm"></select>월
+    <select id="dd"></select>일
+    <input type="date">
+    
+    <!-- 아래 라이브러리 주소를 가져와서 사용하겠다. -->
+    <script src="lib/util.js"></script>
+    <script >
+        //문서가 실행되면 , yy의 자식으로  opthion 태그를 동적으로 생성해서 부착한다.
+
+            let yy = document.getElementById("yy");
+            // yy.style.background = "yellow";
+            //어떤 요소를 body 태그에 직접 적는 방법이 아니라, 프로그래밍 적으로 동적으로 생성하기
+            for(let i =2025; i>=1945; i--){
+                let op = document.createElement("option"); //<option></option> createElement 로 생성한것과 동일
+                op.text = i; // <option> 2025 </option>
+                yy.add(op); // select 박스에 option을 추가한 효과
+            }
+            // 월채우기
+            let mm = document.getElementById("mm");
+            for(let i =12; i>=1; i--){
+                let op = document.createElement("option"); 
+                if(i <10){ op.text = "0"+i; }
+                else{op.text = i; }
+                
+                mm.add(op); 
+            }
+
+            let dd = document.getElementById("dd");
+            for(let i =31; i>=1; i--){
+                let op = document.createElement("option"); 
+                op.text =getZeroNum(i); 
+                dd.add(op); 
+            }
+    </script>
+
+    
+</body>
+</html>
