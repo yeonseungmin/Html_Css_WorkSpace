@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script>
+        let n=1;
+        function next(){
+            //문서내의
+            document.getElementById("pic").src=`./imeges/hero/image${n}.png`
+            n++;
+            if(n>18){
+                n=1;
+            }
+
+        }
+        function auto(){
+            //지속적으로 next() 함수 호출하게 하자
+            setInterval("next()",60);
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <button onclick="next()">수동</button>
+        <button onclick="auto()">자동</button>
+    </p>
+    
+    <p>
+        <img src="./imeges/hero/image1.png" id="pic">
+    </p>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: lightblue;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            /*
+                현재 요소의 좌,우 여백인 마진을 css 가 스스로 계산하여 동일하게 양분함
+            */
+        }
+        #left{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        #right{
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+        img{
+            width: 200px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class ="container">
+        <img id="pic" src ="iemage/clint_shadow_omen_mlbb_png_transparant_by_dechunf_dezip5c-fullview.png">
+        나 박스1</div>
+    <button id="left">왼쪽</button>
+    <button id="right">오른쪽</button>
+</body>
+</html>

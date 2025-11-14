@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            /*
+                span 과 같은 inline 속성을 갖는 태그는 ,너비와 높이를 조정할수 없으므로
+                웹사이트의 레이아웃에 허용되지 않음
+            */
+            margin-left: 100px;
+            background-color: lightgray;
+            width: 100px;
+            height: 100px;
+            display: inline-block; 
+            /* 
+                inline 속성을 갖지만 , block의 효과 중 너비와 높이 조정 가능 
+                다른 요소와 공존하며 너비 높이등을 사용할때 자주사용.
+            */
+        }
+
+        #box1{
+            /* 
+                절대위치 absolute 란?
+                부모를 기준으로 한 위치 속성
+            */
+            position: absolute;
+            left: 100px; /* left : x축 부모인 body 를 기준으로*/
+            top: 200px;  /* top : y축 부모인 body 를 기준으로*/
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- span 태그는 아무런 효과를 발생시키지 않는 태그임, 목적은 그냥 마크업이다.
+            span은 대표적인 인라인 요소이다.
+            inline 은 너비,높이,패딩,마진 적용불가. 
+    -->
+    <span>나 스팬1</span>
+    <span>나 스팬2</span>
+
+    <div id="box1">박스1</div>
+</body>
+</html>

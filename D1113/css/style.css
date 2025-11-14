@@ -1,0 +1,15 @@
+/* 이 영역은 HTML 이 아닌 CSS 의 영역이다. 따라서 주석도 틀리다. */
+td{ /* td를 대상으로 원하는 CSS 디자인 적용 */
+    font-size: max;
+    color: #0f0f0f;
+    background-color: rgb(189, 211, 187);
+
+}
+input{ /* 모든 input 영역에 적용 */
+    background-color: bisque;
+    border: 2px solid blue;
+}
+textarea{
+    background-color: lightgray;
+    color: white;   /* 글자색 */
+}

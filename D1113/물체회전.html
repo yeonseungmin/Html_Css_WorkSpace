@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #div1{
+            background-color: black;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            
+        }
+    </style>
+    <script>
+        // 자바 언어에서는 함수가 객체안에 소속되어 있기 때문에, 해당 객체의 동작을 제어하는 용도이므로,
+        // 함수라고 부르지 않고 메서드라고 한다.. 따라서 아래에 rotateBox() 는 어떠한 객체에도 포함되어 있지 않은
+        // 단독 함수 영억이므로 , 그냥 사용자 정의 함수라고한다.
+
+        let r=0;// 자바 스크립트는 자료형이 없다. but TypeScript 라는 자료형을 지원하는 JS 파생언어가 존재
+        function rotateBox(){
+            // 문서 내에 div라 불리는 태그요소의 CSS 중 transform rotate() 값을 증가시키자.
+            r-=(Math.random()*100)+10;
+            // document.getElementById("div1").style.transform = "rotate("+ r +"deg)"
+            //문자열 사이에 + 연산자를 연결하기 복잡할경우, 템플릿 문자열을 이용할 수있다.
+            document.getElementById("div1").style.transform = `rotate(${r}deg)`;
+        }
+    </script>
+</head>
+<body>
+    <!-- dividion 의 약어로써, 화면을 분할하는 목적으로 지원되는 태그
+        사용빈도 압도적 -->
+    <div id="div1">
+
+    </div>
+    <button onclick="rotateBox()" id="btn1">회전</button>
+    <a href="javascript:rotateBox()">돌리기</a>
+</body>
+</html>

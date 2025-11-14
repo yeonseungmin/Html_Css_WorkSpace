@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            font-size: 75px;
+            color: red;
+            font-weight: bold;
+            text-align: right;
+        }
+
+    </style>
+    <script>
+        // 전역변수 선언
+        // 우리의 경우 웹브라우저 임으로 웹브라우저가 종료될때까지 유지됨
+        let n =0;
+        function increaseCount(){
+            // alert("나 불렀어?");
+            // 문서내에 box 라 불리는 아이디를 갖는 요소가 보유한 value 값을 1 증가
+                
+            document.getElementById("box").value = ++n;
+        }
+
+    </script>
+
+</head>
+<body>
+    <input id ="box" type="text" value="0">
+    <br>
+    <button onclick="increaseCount()">카운터증가</button>
+</body>
+</html>

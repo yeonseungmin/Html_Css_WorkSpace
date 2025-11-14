@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+    </style>
+    <script>
+        //문서내의 box 아이디를 갖는 요소의 배경색을 뒤집자.
+        let bg;
+        let flag= true; //스위치를 꺼야할지 켜야할지를 결정
+        function onOff(){
+            (flag==true)? bg="Yellow" : bg="Black";
+            flag = !flag;
+            document.getElementById("box").style.backgroundColor=bg;    
+        }
+    </script>
+</head>
+<body>
+    <button onclick="onOff()">스위치</button>
+    <br>
+    <div id="box">영역</div>
+</body>
+</html>

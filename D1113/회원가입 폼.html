@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- 
+CSS란?
+    Cascading Style Sheets의 약자
+    HTML 문서의 디자인적 표현 방법을 기술하는 언어
+2.적용방법(3가지)
+    1)인라인 스타일 : 태그 내부에 style ="" 속성을 이용하여 적용
+        ㄴ 예) <태그 style="속성:값; 속성:값;">
+        ㄴ 단점 : 유지보수가 어렵다. (코드 중복발생)
+        ㄴ 장점 : 우선순위가 가장 높다.
+    2)내부 스타일 시트 : <style>태그 내부에 CSS 코드를 작성 (임베디드 방식)
+        ㄴ 예)
+        <head>
+            <style>
+                태그{
+                    속성:값;
+                    속성:값;
+                }
+            </style>
+        </head>
+        ㄴ 장점 : 한 문서 내에서 여러 태그에 동일한 스타일을 적용할 때 유리
+        ㄴ 단점 : 여러 문서에 동일한 스타일을 적용하기 어렵다.
+        ㄴ 단점 : 문서의 용량이 커질 수 있다.
+    3)외부 스타일 시트 : 별도의 .css 파일을 만들어 링크하는 방법 (링크 형식)
+        ㄴ 예)
+        <head>
+            <link rel="stylesheet" href="파일경로/파일명.css">
+        </head>
+        ㄴ 장점 : 여러 문서에 동일한 스타일을 적용하기 용이
+        ㄴ 장점 : 문서의 용량이 작아진다.
+        ㄴ 단점 : 외부 파일을 추가로 불러와야 하므로 로딩 시간이 길어질 수 있다.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <table border="3px" width="600px" >
+        <tr >
+            <td colspan="2" align="center" style="font-size:medium">
+                <font>회원가입</font>
+            </td>
+        </tr>
+            <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                <input type="text"placeholder="아이디를 입력하세요" maxlength="8">
+            </td>
+        </tr>
+            <tr>
+            <td>
+                Password
+            </td>
+            <td>
+                <input type="password"placeholder="비밀번호를 입력하세요" >
+
+            </td>
+        </tr>
+            <tr>
+            <td>
+                name
+            </td>
+            <td>
+                <input type="name" placeholder="이름 입력">
+            </td>
+        </tr>
+            <tr>
+            <td>
+                이메일
+            </td>
+            <td>
+                <input type="email" placeholder="이메일 입력">
+                <select name="">@
+                    <option value="naver.com">네이버</option>
+                    <option value="daum.net">다음</option>
+                    <option value="google.com">구글</option>
+                    <option value="nate.com">네이트</option>
+                    <option value="direct">직접 입력</option>
+                </select>
+            </td>
+        </tr>
+            <tr>
+            <td>
+                보유기술
+            </td>
+            <td>
+                <input type="checkbox">Java<input type="checkbox">Spring<input type="checkbox">DB<input type="checkbox">FrontEnd
+            </td>
+        </tr >
+        <tr >
+            <td>
+                경력사항
+            </td>
+            <td >
+                <table heitght="5000px" width="300px">
+                    <tr>
+                        <td>
+                            <!-- textarea 사이에는 공백을 부여해서는 안됨 -->
+                            <textarea rows = "10" cols="50"></textarea>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                개인정보 수신 동의
+            </td>
+            <td>
+                <!-- 아래 radio 를 양자택일 하게 하려면 메모리에 올라갈때, 배열화 시켜야함 -->
+                 <!-- 한 공간에 같은이름을 주어서 배열화 -->
+                <input type="radio" name="receive">동의<input type="radio" name="receive">미동의
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                    <button>
+                    등록
+                    </button>
+                    <button>
+                    미등록
+                    </button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
