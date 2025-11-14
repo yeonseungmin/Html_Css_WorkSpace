@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        #img{
+            /* 이미지 뒤에 오는 텍스트들의 높이가 너무 작아서, 이미지와 같은 수평선 상의 라인에 존재함에도 불구하고 
+            사용자들이 보기에는 부자연스로운 현상이 발생함.. 즉 이미지 우측에 여백이 있는 것처럼 느껴짐..
+            이러한 문제를 해결하려면, 어쩔수 없이 이미지를 정상위치에서 벗어나게 해야한다.
+             즉 좌 또는 우측으로 띄워야 한다.. float*/
+            width: 200px;
+            height: auto;
+            float:left; /* 이미지가 오른쪽으로 떠있음 */
+            margin-left: 10px; /* 이미지와 텍스트 사이의 간격 */
+        }
+        /*
+            block 요소는 float 요소를 인식할 수 없으므로 float 요소의 빈자리에 아무것도 없다고 생각하여 침투해버린다.
+            inline 요소는 float 된 요소를 인식할 수 있으므로 ,float요소의 빈자리를 침범하지 않는다.
+            주의!!) 텍스트가 인라인이다. 맞다!! , html 에서는 텍스트 : 요소
+            모든 요소는 inline or block 이다.
+        */
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis repudiandae deserunt repellat vitae distinctio ipsum laborum, exercitationem optio ipsam officia eos maxime dicta velit odit tempora voluptas impedit adipisci eum.
+    Sint qui tenetur error sunt eos, odio sed deleniti doloremque mollitia dolor quia accusamus asperiores facere officiis totam vero alias. Cumque veritatis aliquid explicabo, libero ad iure eum animi maxime!
+    <img id="img" src="iemage/clint_shadow_omen_mlbb_png_transparant_by_dechunf_dezip5c-fullview.png">
+    <div id="box"></div>
+    Architecto ullam temporibus quis cum doloremque velit id officia! Explicabo sit id ut quo eum odio temporibus ipsum, veritatis natus neque exercitationem, nam aperiam a nisi beatae quod unde officiis?
+    Impedit in tempora deleniti ipsum amet tenetur sunt reprehenderit aperiam, provident doloremque voluptate quis veritatis nostrum ducimus alias voluptatem corporis beatae natus aut! Assumenda nulla aperiam maxime pariatur doloribus laboriosam?
+    Voluptatem voluptatibus non inventore dolores? Itaque, cumque perferendis sit, repudiandae quia id minima in ab nobis ex quis ea sint! Alias quas, voluptatem id architecto illo omnis unde quisquam corporis?
+    Quo itaque ab nobis voluptatem qui impedit quaerat fugiat, quam sint facilis eos repudiandae, dolorem sapiente expedita nisi minima vel est officiis laudantium veniam, exercitationem beatae odit. Exercitationem, quod corporis.
+    Molestias explicabo molestiae vero quae dolore fuga ex accusantium dignissimos id dolores maiores, sint placeat repellat exercitationem praesentium dicta porro nam blanditiis aut ipsam in. Distinctio repudiandae culpa facilis praesentium.
+    Sapiente, sequi soluta! Distinctio, officiis rerum et enim saepe aperiam. Vero id natus doloremque nostrum eum culpa, mollitia dolores aperiam necessitatibus ipsum, tempora cum nobis quos ducimus ex velit. Laudantium?
+    Quibusdam eveniet nostrum laborum eum culpa, doloremque architecto temporibus assumenda molestias unde provident at eos dolorem, cum, ea nemo dolor iusto similique atque maxime nobis. Officiis dolores illum corrupti eveniet.
+    Veniam saepe voluptate iusto consequatur, nobis, fuga porro repellat nesciunt voluptates, quaerat ducimus excepturi! Fuga porro odio nemo, tempore rerum recusandae eius odit ipsum quas consequuntur quia, ullam rem illo!
+</body>
+</html> 

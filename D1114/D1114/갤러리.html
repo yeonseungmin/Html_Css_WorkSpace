@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 700px;
+            height: 600px;
+            margin: auto;
+            background-color: aqua;
+            text-align: center;
+        }
+        .aside{
+            width: 100px;
+            height: 600px;
+            float: left;
+            background-color: brown;
+            text-align: center; /* div 내의 content를 가운데 정렬*/
+            overflow:scroll; /* 현재 요소안의 content 가 커질때 처리할 방법을 정함*/
+        }
+        .content{
+            width: 550px;
+            height: 550px;
+            float: left;
+            margin-top: 25px;
+            margin-left: 25px;
+            background-color: blanchedalmond;
+            
+        }
+        .thumb{
+            width: 90px;
+            border: 2px solid red;
+        }
+        .view{
+            width: 550px;
+            height: 550px;
+        }
+    </style>
+    <script>
+        function setIMG(path){
+            let img = document.querySelector(".content img")
+            img.src = path
+            console.log("넘겨받은 이미지 경로는",path)
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class ="aside">
+            <img src ="./iemage/geographic/bear.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/cosmos.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/diver.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/fish.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/fox.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/lion.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/mouse.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/sunset.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <img src ="./iemage/geographic/turtle.jpg" alt="" class="thumb" onmouseover="setIMG(this.src)">
+            <!-- <button class="box" onmouseover="setIMG('bear')"></button>
+            <button class="box" onmouseover="setIMG('cosmos')"></button>
+            <button class="box" onmouseover="setIMG('diver')"></button>
+            <button class="box" onmouseover="setIMG('fish')"></button>
+            <button class="box" onmouseover="setIMG('fox')"></button>
+            <button class="box" onmouseover="setIMG('lion')"></button>
+            <button class="box" onmouseover="setIMG('mouse')"></button>
+            <button class="box" onmouseover="setIMG('sunset')"></button>
+            <button class="box" onmouseover="setIMG('turtle')"></button> -->
+
+        </div>
+        <div class = "content">
+            <img src ="./iemage/geographic/bear.jpg" class = "view">
+        </div>
+    </div>
+    
+</body>
+</html>

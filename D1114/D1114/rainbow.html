@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 70%;
+            height: 500px;
+            background-color: aqua;
+            margin: auto;
+        }
+        .header{
+            width: 100%;
+            height: 20%;
+            background-color: antiquewhite;
+        }
+        .header button {
+            width: 14.28%;
+            height: 100%;
+            float: left;
+        }
+
+        .header div:nth-child(1){background-color: red;}
+        .header div:nth-child(2){background-color: orange;}
+        .header div:nth-child(3){background-color: yellow;}
+        .header div:nth-child(4){background-color: green;}
+        .header div:nth-child(5){background-color: blue;}
+        .header div:nth-child(6){background-color: navy;}
+        .header div:nth-child(7){background-color: purple;}
+        .content{
+            width: 100%;
+            height: 400px;
+            background-color: black;
+        }
+
+    </style>
+    <script>
+        // 문서내의 content 라는 클래스에 대해 빨간색 배경을 적용
+        let x =0;
+        function setBg(x){
+           let content = document.querySelector(".content")
+           if(x==1){content.style.backgroundColor ="red";}
+           if(x==2){content.style.backgroundColor ="orange";}
+           if(x==3){content.style.backgroundColor ="yellow";}
+           if(x==4){content.style.backgroundColor ="green";}
+           if(x==5){content.style.backgroundColor ="blue";}
+           if(x==6){content.style.backgroundColor ="navy";}
+           if(x==7){content.style.backgroundColor ="purple";}
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <button class="red" onmouseover="setBg(1)"></button>
+            <button class="orange" onmouseover="setBg(2)"></button>
+            <button class="yellow" onmouseover="setBg(3)"></button>
+            <button class="green" onmouseover="setBg(4)"></button>
+            <button class="blue" onmouseover="setBg(5)"></button>
+            <button class="navy" onmouseover="setBg(6)"></button>
+            <button class="purple" onmouseover="setBg(7)"></button>
+        </div>
+        <div class="content"></div>
+    </div>
+
+</body>
+</html>
