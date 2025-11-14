@@ -10,31 +10,66 @@
             width: 500px;
             height: 500px;
             margin: auto;
+            position:relative; /* relative 상대위치*/
             /*
                 현재 요소의 좌,우 여백인 마진을 css 가 스스로 계산하여 동일하게 양분함
             */
         }
         #left{
             position: absolute;
-            left: 50px;
+            left: 50px; /* left : x축 부모인 body 를 기준으로 !! right 란 개념이 없음*/
             top: 50px;
         }
         #right{
             position: absolute;
-            left: 100px;
+            left: 150px;
             top: 50px;
+        }
+        #top{
+            position: absolute;
+            left: 100px; /* left : x축 부모인 body 를 기준으로 !! right 란 개념이 없음*/
+            top: 0px;
+        }
+        #bottom{
+            position: absolute;
+            left: 200px;
+            top: 100px;
         }
         img{
             width: 200px;
-            
+            position:absolute;
+            left: 0px;
+            /* 자식 요소에 포지션이 설정되면, 반드시 부모에도 포지션이 명시되어야 한다.*/
+                
         }
+        
     </style>
+    <script>
+        let xPos=0;
+
+        function move(x){
+         let pic = document.getElementById("pic");
+         xPos +=x * 10;
+         pic.style.left= xPos + 'px';
+        }
+
+        function movetop(x){
+         let pic = document.getElementById("pic");
+         xPos +=x * 10;
+         pic.style.top= xPos + 'px';
+        }
+
+
+
+    </script>
 </head>
 <body>
     <div class ="container">
         <img id="pic" src ="iemage/clint_shadow_omen_mlbb_png_transparant_by_dechunf_dezip5c-fullview.png">
         나 박스1</div>
-    <button id="left">왼쪽</button>
-    <button id="right">오른쪽</button>
+    <button onclick="move(-1)" id="left">X값 감소</button>
+    <button onclick="move(1)" id="right">X값 증가</button>
+    <button onclick="movetop(-1)" id="top">y값 감소</button>
+    <button onclick="movetop(1)" id="bottom">y값 증가</button>
 </body>
 </html>

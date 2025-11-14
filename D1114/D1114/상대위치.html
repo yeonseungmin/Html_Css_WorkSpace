@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            /* 
+                절대위치 absolute 란?
+                부모를 기준으로 한 위치 속성
+                ㄴ 다른 요소가 이미 자리를 차지해도, 겹쳐서 위치한다. 
+            */
+            position: absolute;
+            left: 100px; /* left : x축 부모인 body 를 기준으로*/
+            top: 100px;  /* top : y축 부모인 body 를 기준으로*/
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        #box2{
+            position: static; /*기본값*/
+            left: 300px;
+            top: 100px;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!--개발자가 아무것도 포지션을 지정하지 않으면 디폴트는 static이다.
+        ㄴstatic 은 위치값을 조정할 수 없다.
+        ㄴ 따라서 left,top이 적용되지 않는다. 
+        -->
+    <div id="box1">박스1</div>
+    <div id="box2">박스2</div>
+</body>
+</html>
