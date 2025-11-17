@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{margin:0px;}
+
+        /* div 에 이미지를 배경으로 넣어보기
+            배경은 백그라운드에 적용되기 때문에 이미지간 충돌을 발생시키지 않고, 특별히 옵션을 부여하지 않으면
+            디폴트가 패턴 반복..(마치 벽지처럼..)
+        */
+        .container{
+            background-image: url('../iemage/shooting/bg.jpg');
+            width:100%;
+            height: 576px;
+        }
+        #pic{
+            width: 70px;
+            height: 55px;
+            position: absolute; /*바깥쪽의 부모 요소를 기준으로 위치를 지정할 수 있는 속성을 absolute*/
+            left:100px; /*부모인 container의 꼭지점으로부터 x축의 양의 방향으로 100px*/
+            top:200px;/*부모인 container의 꼭지점으로부터 y축의 양의 방향으로 200px*/
+        }
+    </style>
+    <script>
+        let x=100;
+        let y=200;
+        let bgX=0; //배경의 x축 위치를 결정할 전역변수
+
+        //우측이동
+        function moveRight(){
+            //문서내의 pic이라는 아이디 갖는 요소의 position 중 left값을 증가 
+            //x의 증가분!!!
+            x+=10;
+            document.getElementById("pic").style.left=x+"px";
+        }
+
+        //좌측이동
+        function moveLeft(){
+            x-=10;
+            document.getElementById("pic").style.left=x+"px";
+        }
+
+        //위로 이동
+        function moveUp(){
+            y-=10;
+            document.getElementById("pic").style.top=y+"px";
+        }
+
+        //아래로 이동 
+        function moveDown(){
+            y+=10;
+            document.getElementById("pic").style.top=y+"px";
+        }        
+        
+        //키보드 누를때 호출되는 함수
+        function control(){
+            //위, 우,아래,좌 방향키에만 반응을 보여야 함...
+
+            //js에 이미 내장된 객체 중 event 객체는, 브라우저 사용자가 한 행위에 대한 모든 정보를 포함하고 있음
+            /*
+            컴퓨터는 1,0 만을 이해하므로, 사용자가 키보드에서 문자를 입력하면 직접적으로 
+            이해를 하지 못한다, 하지만 사람은 1,0 으로 컴퓨터와 대화하기 힘들기 때문에 
+            컴퓨터와 사람 사이에 중간단계의 십진수 표 체계를 마련하여, 사용자가 a를 입력하면
+            65라는 십진수가 컴퓨터로 입력되고, 이 십진수가 1,0 의 이진수로 변환되어 사용되어짐
+            이때 a는 65, b는 66과 같은 십진수 체계는 미국표준협회에서 정해놓은 규칙이며
+            오늘날 영문자보다 더 넓은 범위의 문자를 지원하는 유니코드까지 확장되었다
+            */
+            console.log("사용자가 누른 키에 대한 아스키 값은 ", event.keyCode);
+
+            //37부터~~시계방향으로 값 증가 
+        
+            if(event.keyCode==37){ //좌측키보드 누르면  
+                moveLeft();
+                moveLeft();
+            }else if(event.keyCode==38){ //위쪽 
+                moveUp()
+                moveUp()
+            }else if(event.keyCode==39){ //오른쪽 
+                moveRight();
+                moveRight();
+            }else if(event.keyCode==40){ //아래
+                moveDown()
+                moveDown()
+            }
+        }
+
+        //배경효과
+        function bgEffect(){
+            bgX-=4;
+            document.querySelector(".container").style.backgroundPosition=`${bgX}px 0px`;
+        }
+
+    </script>
+</head>
+<body onKeyDown="control()" onLoad="setInterval('bgEffect()', 10)">
+    <div class="container">
+        <img src='iemage/shooting/plane.png' alt="" id="pic">
+    </div>
+
+</body>
+</html>
