@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 600px;
+            background-color: aqua;
+            margin: auto;
+            
+            
+            
+        }
+        .txt{
+            
+            width: 100%;
+            height: 200px;
+            background-color: antiquewhite;
+            text-align: center;
+            font-size: 85px;
+            line-height: 200px;
+            float: left;
+            
+        }
+        .keyinput{
+            width: 100%;
+            height: 150px;
+            text-align: center;
+            background-color: azure;
+            float: left;
+            
+        }
+        /* 후손 선택자  */
+        .keyinput input{
+            width: 100%;
+            height: 98%;
+            background-color: cadetblue;
+            font-size: 75px;
+            float: left;
+            
+        }
+
+        .feedback{
+            width: 100%;
+            height: 150px;
+            text-align: center;
+            font-size: 90px;
+            background-color: aquamarine;
+            float: left;
+
+        }
+        .footer{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            float: left;
+            background-color: aliceblue;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;
+            color: red;
+        }
+
+    </style>
+    <script>
+        let word = ["태호","동훈","생선","등심","안심","스시","치킨","피자","햄버거","라면"];
+        let index = 0;
+        let score = 0;
+        
+
+        //문서 내의 txt 라는 클래스 요소의 태그와 태그 사이에 문자열 끼워 넣기
+        function init(){
+            let txt = document.querySelector(".txt");
+            txt.innerText = word[index];
+            printscore();
+        }
+        // 게임 진행에 있어 재사용성이 높으면 함수로
+        function printscore(){
+            let foot = document.querySelector(".footer");
+                foot.innerText = score +"점";
+           
+        }
+        // 다음이란 함수는 순서가 존재하기에 가능
+        function next(){
+            //문서내의 txt 라는 클래스를 갖는 요소의 innerText에 다음 배열값 출력
+            // input 값이 txt의 사이값인 innerText와 일치한다면
+            if(event.keyCode == 13){
+                if(document.querySelector(".keyinput input").value == document.querySelector(".txt").innerText){
+                    
+                    let txt =document.querySelector(".txt");
+                    txt.innerText = word[parseInt(Math.random()*word.length)];
+
+                    document.querySelector(".feedback").innerText="O"
+                    document.querySelector(".keyinput input").value = "";
+                    score += 20;
+                    printscore();
+                    
+                }
+                else{
+                    document.querySelector(".feedback").innerText="X"
+                    document.querySelector(".keyinput input").value = "";
+                    score -=10;
+                    printscore();
+                }
+            }
+        }
+
+
+    </script>
+
+
+</head>
+<!-- HTML 문서가 모두 로드 되면 , 발생하는 이벤트인 load 이벤트를 처리하는 onLoad 이벤트 핸들러 사용 -->
+<body onload="init()">
+    <div class="container">
+        <div class="txt" ></div>
+        <div class="keyinput" >
+            <input type="text" onkeyup="next()">
+        </div>
+        <div class="feedback"></div>
+        <div class="footer" ></div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+<script>
+    // 자바 스크립트에서 배열은 이미 내장 되어있는 객체이다.
+    // 이러한 객체들을 가리켜 (built-in Object_)이라함
+    let food = new Array(); // 거의 java.util.List와 흡사함 ( 자바 스크립트에서는 크기를 지정하지 않아도 생성됨)
+    let skill = ["java","Oracle"];
+    
+    food[0] ="등심까스";
+    food[1] ="동훈";
+    food[2] ="태호";
+    food[3] ="생선까스";
+    food[4] ="안심까스";
+
+    //난수는 1보다 작으므로, 그 어떤 수 n을 곱하면 최대값이 그 n에 도달하지 못함
+    let r = (Math.random());
+    let n = parseInt (r*food.length)
+    console.log(`랜덤값은 ${n}입니다., 오늘 당신이 먹을 점심은 ${food[n]}입니다.`)
+    
+
+</script>
