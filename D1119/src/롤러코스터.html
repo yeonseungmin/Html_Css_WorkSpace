@@ -44,9 +44,11 @@
                                     // 프로그램이 끝까지 살아있어야 함으로 전역변수여야한다.
         let img;     //다른 함수에서도 사용하기위해 전역변수로 선언
         let i =0;
+        let degree = 0;
+
         function move(){
             let x = event.clientX; //마우스 x좌표
-            let y = event.client
+            let y = event.clientY;
             ; //마우스 y좌표
             //console.log(`현재 마우스 좌표는 ${x},${y}`);
             let pos = [x,y];
@@ -97,12 +99,22 @@
         function manual(){
             //문서내의 content 영역 안에 존재하는 캐릭터 위치를 누적된 좌표를 대상으로 
             // 순서대로 접근해 보자.
+            
             img.style.left = posList[i][0] + "px";
             img.style.top = posList[i][1] + "px";
             i++;
+            if(i >= posList.length){
+                i=0;
+            }
+        }
+        function roll(){
+            img.style.transform = `rotate(${degree}deg)`;
+            
+            degree +=15;
         }
         function auto(){
-            setInterval(manual,300);
+            setInterval(manual,150);
+            setInterval(roll,150);
         }
     </script>
 </head>
@@ -114,8 +126,8 @@
         <div class = "aside" >
             
         </div>
-        <button onclick="manual()">수동</button>
-        <button onclick="auto()">자동</button>
+        <button onclick="manual(),roll()" >수동</button>
+        <button onclick="auto()" id = "bt_auto">자동</button>
     </div>
 </body>
 </html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 800px;
+        height: 650px;
+        background-color: rgb(26, 136, 233);
+        margin: auto;
+    }
+    .aside_regist{
+        width: 150px;
+        height: 100%;
+        background-color: antiquewhite;
+        float: left;
+        text-align: center;
+        font-size: 10px;
+        
+    }
+    .content{
+        width: 500px;
+        height: 100%;
+        background-color:aqua;
+        float: left;
+    }
+    .header{
+        width: 100%;
+        height: 50px;
+        background-color:aquamarine;
+    }
+    .list{
+        width: 100%;
+        height: 600px;
+        background-color:rgb(27, 223, 223);
+    }
+    .aside_detail{
+        width: 150px;
+        height: 100%;
+        background-color: antiquewhite;
+        float: left;
+        text-align: center;
+        font-size: 10px;
+    }
+    .aside_regist input, .aside_detail input{
+        width: 80%;
+        height: 5%;
+    }
+
+</style>
+<script>
+    //가입 폼에서 등록할 한 사람에 대한 정보를 , 먼저 1차원 배열에 담자.
+    // 그 후 , 회원의 목록을 보관하기 위한 또 하나의 큰 배열에 생성된 1차원 배열을 추가하자.
+    //결국 배열에 또 다른 배열이 추가 됨으로, 최종적으로는 2차원 배열인 표형태가 완성
+    // ㄴ 메모리 데이터베이스 가 완성된다.
+    let memberList = new Array(); // 크기 결정 X
+                                //첫 회원 배열이 추가 될때 부터는 2차원 배열
+    function regist(){
+        let member = new Array(3);
+        member[0] =document.getElementById("id").value;
+        member[1] =document.getElementById("pwd").value;
+        member[2] =document.getElementById("name").value;
+        //한사람의 정보를 담은 멤버 배열을, memberList배열에 push
+        memberList.push(member);
+        console.log(memberList);
+        getList();
+    }
+    //동적으로 이벤트 핸들러 삽입
+    function init(){
+        let btn_regist = document.querySelector(".aside_regist button");
+        btn_regist.addEventListener("click",function(){
+            //한사람에 대한정보를 담을 함수 호출;
+            regist();
+        });
+        // let btn_detail = document.querySelector(".aside_detail button");
+        // btn_detail.addEventListener("click",function(){
+        //     alert("나 눌렀어?");
+        // });
+    }
+    //회원의 목록을 출력하는 함수, 왜함수로 정의하는가
+    //회원의 목록은 가입, 삭제 ,수정 시 수시로 실행할 코드이므로 재사용성이 높아야 좋음
+    // 따라서 함수로 정의
+    function getList(){
+        //문서내의 .list 라는 클래스명을 갖는 div 에 동적으로 테이블 태그를 출력
+        let list =document.querySelector(".list");
+        let tag =""; //list에 출력할 태그를 모아놓은 변수
+
+        tag = tag +"<table border = \"1\" width = \"100%\">";
+        tag = tag +"<thead>";
+        tag = tag +"<tr>";
+        tag = tag +"<th>아이디</th>";
+        tag = tag +"<th>비밀번호</th>";
+        tag = tag +"<th>이름</th>";
+        tag = tag +"</tr>";
+        tag = tag +"</thead>";
+        tag = tag +"<tbody>";
+            for(let i=0; i<memberList.length; i++){
+                teg = tag +"<tr>";
+                    for(let j=0; j<memberList[i].length; j++){
+                        tag = tag +"<td>"+memberList[i][j]+"</td>";
+                    }
+                tag = tag +"</tr>";
+            }   
+        tag = tag +"</tbody>";
+        tag = tag +"</table>";
+        list.innerHTML = tag;
+    }
+    //js 전역 영역은 js 의 윈도우 객체로 표현됨
+    //이벤트 구현시 사용되는 이름없는 익명 함수를 가리켜 콜백(callback) 함수라 한다.
+    //왜 콜백 이라는 용어를 쓰나? 일반적으로 함수는 개발자가 원하는 시점에 직접 호출하여 사용하는 반면,
+    //콜백 함수란, 특저 이벤트나 조건이 발생했을때, 시스템이 역으로 개발자가 정의해놓은 함수를 호출해준다하여
+    //콜백이라 함.
+    window.addEventListener("load", function(){
+        init();
+    });
+</script>  
+<body >
+    <div class ="container">
+        <div class="aside_regist">
+            <input type="text" id="id" placeholder="아이디 입력">
+            <input type="text" id="pwd" placeholder="비밀번호 입력">
+            <input type="text" id="name" placeholder="이름 입력">
+            <button>가입</button>
+        </div>
+        <div class="content">
+            <div class="header"></div>
+            <div class="list"></div>
+        </div>
+        <div class="aside_detail">
+            <input type="text" placeholder="아이디 입력">
+            <input type="text" placeholder="비밀번호 입력">
+            <input type="text" placeholder="이름 입력">
+            <button>수정</button>
+            <button>삭제</button>
+        </div>
+
+    </div>
+</body>
+</html>
