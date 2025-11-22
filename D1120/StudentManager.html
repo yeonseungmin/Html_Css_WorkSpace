@@ -58,6 +58,7 @@
     // ㄴ 메모리 데이터베이스 가 완성된다.
     let memberList = new Array(); // 크기 결정 X
                                 //첫 회원 배열이 추가 될때 부터는 2차원 배열
+    
     function regist(){
         let member = new Array(3);
         member[0] =document.getElementById("id").value;
@@ -67,6 +68,13 @@
         memberList.push(member);
         console.log(memberList);
         getList();
+        //입력했던 text field 초기화
+        //메모리에 올라온 DOM 객체를 접근하는 방법은 여러가지가 있다.
+        //html의 부모 자식 관계는 DOM 요소에도 영향을 미친다..
+        // window.document.form1.reset(); 테이블까지 리셋됨..
+        document.getElementById("id").value ="";
+        document.getElementById("pwd").value ="";
+        document.getElementById("name").value ="";
     }
     //동적으로 이벤트 핸들러 삽입
     function init(){
@@ -80,6 +88,11 @@
         //     alert("나 눌렀어?");
         // });
     }
+    function getDetail(v1,v2,v3){
+        document.getElementById("id2").value =v1;
+        document.getElementById("pwd2").value =v2;
+        document.getElementById("name2").value =v3;
+    }
     //회원의 목록을 출력하는 함수, 왜함수로 정의하는가
     //회원의 목록은 가입, 삭제 ,수정 시 수시로 실행할 코드이므로 재사용성이 높아야 좋음
     // 따라서 함수로 정의
@@ -87,7 +100,7 @@
         //문서내의 .list 라는 클래스명을 갖는 div 에 동적으로 테이블 태그를 출력
         let list =document.querySelector(".list");
         let tag =""; //list에 출력할 태그를 모아놓은 변수
-
+        
         tag = tag +"<table border = \"1\" width = \"100%\">";
         tag = tag +"<thead>";
         tag = tag +"<tr>";
@@ -98,7 +111,9 @@
         tag = tag +"</thead>";
         tag = tag +"<tbody>";
             for(let i=0; i<memberList.length; i++){
-                teg = tag +"<tr>";
+                //아래 코드에서 this란? mouseover 이벤트를 일으킨 주제인 tr DOM을 가르킴
+                //getDetail() 유저가 목록에서 선택한 유저 한명에 대한 정보를 알려주는 함수
+                tag = tag +"<tr onMouseOver='this.style.background=\"yellow\"; this.style.cursor=\"pointer\"' onMouseOut='this.style.background=\"none\"' onClick ='getDetail(\"" +memberList[i][0]+"\",\""+memberList[i][1]+"\",\""+memberList[i][2]+"\" )'>";
                     for(let j=0; j<memberList[i].length; j++){
                         tag = tag +"<td>"+memberList[i][j]+"</td>";
                     }
@@ -120,19 +135,25 @@
 <body >
     <div class ="container">
         <div class="aside_regist">
-            <input type="text" id="id" placeholder="아이디 입력">
-            <input type="text" id="pwd" placeholder="비밀번호 입력">
-            <input type="text" id="name" placeholder="이름 입력">
-            <button>가입</button>
+            <form name="form1">
+                <input type="text" id="id" placeholder="아이디 입력">
+                <input type="text" id="pwd" placeholder="비밀번호 입력">
+                <input type="text" id="name" placeholder="이름 입력">
+                <button type="button">가입</button>   
+                <!--타입이 없는 버튼이 폼에 들어가면 자동으로 submit으로 됨 
+                submit은 현재 폼 양식의 모든 요소를 서버로 전송해버린다. 
+                    현재 우리는 action(서버의 url) 명시하지 않았기 때문에  문서 새로고침 효과가 나 버림
+                -->
+            </form>
         </div>
         <div class="content">
             <div class="header"></div>
             <div class="list"></div>
         </div>
         <div class="aside_detail">
-            <input type="text" placeholder="아이디 입력">
-            <input type="text" placeholder="비밀번호 입력">
-            <input type="text" placeholder="이름 입력">
+            <input type="text" placeholder="아이디 입력" id="id2">
+            <input type="text" placeholder="비밀번호 입력" id="pwd2">
+            <input type="text" placeholder="이름 입력" id="name2">
             <button>수정</button>
             <button>삭제</button>
         </div>
