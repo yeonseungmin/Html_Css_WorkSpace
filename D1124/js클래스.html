@@ -1,0 +1,17 @@
+<script>
+    /* javascript 의 정식 명칭은 ECMAScript이다.
+        2015년도에 발표된 ES6부터는 클래스,상속 등을 지원함
+        React,Vue 프레임웤에 객체가 사용됨
+    */
+    class Dog{
+        // 멤버 변수를 선언 하는 위치가 자바와는 살짝 다르다.
+        // constructor() 생성자 메서드에 선언 타입 또한 this.
+        constructor(){
+            this.age = 5;
+        }
+        // 아래의 함수는 Dog 클래스에 소속 되므로, 함수라 해도되지만 이 객체의 동작 방식을 결정한다고 해서 Method 라 한다.
+        getAge(){ 
+            return this.age;
+        }
+    }
+</script>

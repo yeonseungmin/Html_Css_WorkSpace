@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 1000px;
+            height: 700px;
+            background-color: yellow;
+            margin: auto;
+            position: relative; /* static + left,top 이 적용되는 상태이며, 다른태그에 의해 위치가 결정되므로
+                                    relative라 한다.. 즉 다른 태그에 의해 밀려난 바로 그자리, 자기자신의 본연의 위치*/
+        }
+
+    </style>
+    <script>
+        // 현실의 총알을 정의한다. (즉 클래스를 정의한다.)
+        //java,C#에서는 개발자가 클래스르 정의하면, 새로운 자료형을 정의하는 것으로 인정해줌
+        class Bullet{
+
+            constructor(){ // 생성자.
+                this.x=0;//x라는 인스턴스 변수 선언 
+                        // 자바에서 전역변수가 필요없는 이유?
+                        // 일반적인 의미의 전역변수란 프로그램이 끝까지 생명력이 유지되는 변수를 의미
+                        // 객체 지향 언어에서는 class 영역 바깥쪽에 코드를 작성할 수 없기 때문에
+                        // 전역변수를 지원하지 않는다.  
+                        // (OOP 언어에서는 개발자가 new 에 의해 생성한 인스턴스를 죽이는 방법이 없기 때문에 인스턴스 변수로 선언하면,)
+                        // 그 객체가 죽을 때 까지는 그 값이 같이 유지되므로, 전역변수를 사용할 일이 없다.
+
+
+                //DOM 이란? 태그마다 1:1 대응되는, 즉 태그를 모방한 객체 채계
+                //Document Object Model 문서내의 모든 태그마다 모방하여 객체화 시킨 것
+                this.div = document.createElement("div");// 총알을 시각화 시킬 div 태그 <div></div> 동일
+                this.div.style.width=30+"px";
+                this.div.style.height=30+"px";
+                this.div.style.backgroundColor = "red";
+                this.div.style.borderRadius = 45 +"%";
+                //css에서 자식의 포지션이 명시되면 반드시 부모도 명시해야한다.
+                this.div.style.position = "absolute"; //부모를 기준으로 한 위치속성을 절대 위치라한다.
+                this.div.style.left = 0 +"px";
+                this.div.style.top = 300 +"px";
+                //stage 에 부착 , DOM 의 ID 가 Stage인 객체에 접근
+                this.stage =  document.getElementById("stage");
+
+                //stage에 자식요소로 div 를 부착
+                this.stage.appendChild(this.div);
+
+                this.move();
+                //아래 보이는 함수 정의는 화살표 함수라는 함수를 말하며 자바언어에서의 람다와 흡사하다.
+                // java 에서 rambda 는 함수형 인터페이스를 의미.
+                setInterval(()=>{
+                    //화살표 함수 내에서의 this는 자기자신의 바로 바깥쪽 Context를 의미하므로, 이 총알 객체의 인스턴스를 의미
+                    this.move();
+                },10);
+
+            }
+            // 생성된 총알의 동작을 표현
+            move(){ // 메서드.
+                //총알은 x 방향으로 점점 값이 커지면 됨
+                this.x +=10;
+                this.div.style.left = this.x +"px";
+
+            }
+        }
+
+        // 문서에 이벤트를 연결할 경우 window 이용
+        window.addEventListener("keydown",function(e){
+            // alert("키보드 눌렀음");
+            // 키보드 스페이스바의 아스키 코드를 조건으로 
+            if(e.keyCode == 32){
+                new Bullet();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="stage"></div>
+</body>
+</html>
