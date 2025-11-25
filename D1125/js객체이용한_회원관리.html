@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 800px;
+            height: 650px;
+            background-color: aliceblue;
+            margin: auto;
+            margin-top: 60px;
+        }
+        .aside{
+            width: 150px;
+            height: 100%;
+            background-color: red;
+            float: left;
+        }
+        .aside input{
+            width: 90%;
+            margin: auto;
+        }
+        .content{
+            width: 650px;
+            height: 100%;
+            background-color: green;
+            float: left;
+        }
+    </style>
+    <script>
+        // 2015 JS : ES6 (클래스 , 상속 지원버전)
+        // 수업주제 : OOP에는 데이터에 이름을 붙일수 있기 때문에 직관성이 뛰어나다
+        //      let member = ["zino",13,true]
+        /*
+                let member ={
+                    name:"zino"
+                    ,age: 13
+                    ,isMarried:false
+                }
+        */
+       let memberList=[];
+       function getList(){
+        //메모리 올라온 테이블을 시각화
+        //문서 내의 컨텐트 클래스의 innerHTML 속성이용
+        let tag="";
+        tag+="<table boder='1px' width='100%'>";
+        tag+="<thead>";
+        tag+="<tr>";
+        tag+="<th>이름</th>"
+        tag+="<th>이메일</th>"
+        tag+="<th>직업</th>"
+        tag+="</tr>"; 
+        tag+="</thead>";
+        tag+="<tbody>";
+            //아래의 tr 세트는 멤버 리스트 만큼 반복문 돌리면서 한명씩 접근
+            for(let i =0; i<memberList.length; i++){
+                tag+="<tr>";
+                    for(let j=0; j<memberList[i].length; j++){
+                        tag+="<td>"+memberList[i][j]+"</td>";
+                    }
+                tag+="</tr>"; 
+            }
+        tag+="</tbody>";
+        tag+="</table>";
+
+        document.querySelector(".content").innerHTML=tag;
+
+       }
+        function regist(){
+            //함수를 호출하면 좌측에 입력폼에 데이터를 이용하여 회원 1명의 인스턴스를 메모리에 올려
+            //회원들을 모아놓을 1차원 배열에 누적시키자.
+            let member ={};     //인스턴스
+            member["name"]=document.getElementById("name").value;
+            member["email"]=document.getElementById("email").value;
+            member["job"]=document.getElementById("job").value;
+
+            memberList.push(member);        //한명의 인스턴스를 동적으로 추가
+
+            getList();
+        }
+
+        addEventListener("load",function(){
+            document.getElementById("bt").addEventListener("click",function(){
+                //회원등록 작성
+                regist();
+            })
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="aside">
+            <input type="text" placeholder="이름" id="name">
+            <input type="text" placeholder="이메일" id="email">
+            <input type="text" placeholder="직업" id="job">
+            <button type="button" id="bt">등록</button>
+            
+        </div>
+        <div class="content">
+
+        </div>
+    </div>
+</body>
+</html>
