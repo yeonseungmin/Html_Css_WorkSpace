@@ -56,10 +56,11 @@
         tag+="<tbody>";
             //아래의 tr 세트는 멤버 리스트 만큼 반복문 돌리면서 한명씩 접근
             for(let i =0; i<memberList.length; i++){
+                let member = memberList[i];
                 tag+="<tr>";
-                    for(let j=0; j<memberList[i].length; j++){
-                        tag+="<td>"+memberList[i][j]+"</td>";
-                    }
+                tag+="<td>"+member.name+"</td>";
+                tag+="<td>"+member.email+"</td>";
+                tag+="<td>"+member.job+"</td>";
                 tag+="</tr>"; 
             }
         tag+="</tbody>";
