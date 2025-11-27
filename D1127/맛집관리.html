@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 1500px;
+            height: 700px;
+            background-color: aqua;
+            margin: auto;
+        }
+        .aside{
+            width: 200px;
+            height: 100%;
+            background-color: antiquewhite;
+            float: left;
+        }
+        .content{
+            width: 1300px;
+            height: 100%;
+            background-color: aquamarine;
+            float:left;
+        }
+        .aside *{
+            width: 90%;
+            margin-bottom: 3px;
+        }
+        .aside img{
+            width: 90%;
+            height: 100px;
+        }
+        textarea{
+            height: 150px;
+        }
+    </style>
+    <script>
+        //마커 이미지 배열
+        let foodName=["비빔밥","김밥","전통","마커1","마커2"];
+        let iconArray=["bibimbab.jpg"
+                        ,"gimbab.jpg"
+                        ,"tradtion.jpg"
+                        ,"marker1.jpg"
+                        ,"marker2.png"];
+        let mapProp;
+        let map;
+
+        function init(){
+            let icon = document.getElementById("icon");
+            //마커를 동적으로 채우기
+            //icon이라는 아이디로 메모리에 올라온 select DOM의 자식 요소인 option DOM을 동적으로 생성하여
+            //select DOM 에 부착하자.
+            
+            for(let i=0; i<foodName.length; i++){
+                let op = document.createElement("option");// = <option></option>
+                op.text=foodName[i];
+                op.value=iconArray[i];
+                //select DOM 에 부착
+                icon.add(op);
+            }
+            //완성된 select 박스에 change 이벤트 적용
+            //이미지를 다른 것으로 선택할 때마다 이미지 변경하여 보여줘야 함으로
+            icon.addEventListener("change",function(){
+                //alert("당신이 지금 선택한 이미지 명은?" + icon.value);
+                //alert("당신이 지금 선택한 이미지 명은?" + this.value);
+                //this 는 이벤트를 일으킨 주체 = icon
+
+                document.getElementById("pic").src="../imeges/marker/"+`${this.value}`;
+
+            });
+
+            mapProp={
+                center:new google.maps.LatLng(37.49959, 127.03046),
+                zoom:15,
+            };
+            map = new google.maps.Map(document.getElementById("content"),mapProp);
+           
+        }
+        //지금 떠있는 구글맵에 마커추가하기
+        //매개변수 map : 기존에 떠 있는 구글맵 객체
+        //매개변수 pos : 위도,경도 정보를 가진 객체
+        function addMarKer(map,pos,path){
+            let marker = new google.maps.Marker({
+                position: pos
+                ,animation:google.maps.Animation.BOUNCE
+                ,icon:{//icon에 대해서 경로만 지정하는것이 아니라, 더 많은 속성을 위해 객체로 표현
+                    url:path,
+                    scaledSize: new google.maps.Size(40,40),
+                }
+                
+            });
+            marker.setMap(map);
+            var infowindow = new google.maps.InfoWindow({
+                content:"동훈이 맛집"
+                });
+
+            infowindow.open(map,marker);
+            
+            
+        }
+        //맛집 등록(정보를 저장도 해야하고 , 화면에 유저가 선택한 이미지가 마커로 뜨게 처리..)
+        function regist(){
+            addMarKer(map,mapProp.center,document.getElementById("pic").src);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="aside">
+            <input type="text" placeholder="상호명">
+            <input type="text" placeholder="위도,경도">
+            <input type="text" placeholder="URL">
+            <select id="icon" >
+                <option value="">마커선택</option>
+            </select>
+            <img id="pic">
+            <textarea></textarea>
+            <button onclick="regist()">등록</button>
+
+        </div>
+        <div class="content" id="content"></div>
+    </div>
+     <script src="https://maps.googleapis.com/maps/api/js?key=(자신의 구글키)&callback=init"></script>
+</body>
+</html>
