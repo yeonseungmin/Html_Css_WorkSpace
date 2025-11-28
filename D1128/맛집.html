@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         .container{
             width: 1500px;
@@ -37,7 +36,6 @@
         }
     </style>
     <script>
-        
         //마커 이미지 배열
         let foodName=["비빔밥","김밥","전통","마커1","마커2"];
         let iconArray=["bibimbab.jpg"
@@ -47,7 +45,6 @@
                         ,"marker2.png"];
         let mapProp;
         let map;
-        let storeList=[];
 
         function init(){
             let icon = document.getElementById("icon");
@@ -83,7 +80,7 @@
         //지금 떠있는 구글맵에 마커추가하기
         //매개변수 map : 기존에 떠 있는 구글맵 객체
         //매개변수 pos : 위도,경도 정보를 가진 객체
-        function addMarKer(map,pos,path,msg){
+        function addMarKer(map,pos,path){
             let marker = new google.maps.Marker({
                 position: pos
                 ,animation:google.maps.Animation.BOUNCE
@@ -95,7 +92,7 @@
             });
             marker.setMap(map);
             var infowindow = new google.maps.InfoWindow({
-                content:msg
+                content:"동훈이 맛집"
                 });
 
             infowindow.open(map,marker);
@@ -104,48 +101,26 @@
         }
         //맛집 등록(정보를 저장도 해야하고 , 화면에 유저가 선택한 이미지가 마커로 뜨게 처리..)
         function regist(){
-            //현실의 한 상점을 표현하기 위해 OOP에서 객체를 활용한다.
-            //클래스(거푸집)로 정의해도 되지만, 단순 데이터 저장용이라면 굳이 로직을 작성할 수 있는 메서드를
-            //지원하는 클래스까지 정의할 필요는 없고 바로 사용할 수 있는 js 고전적 객체를 활용 
-
-            //JQuery 문법 구조는 $(누구를).어떻게(메서드)
-            let store ={
-                store_name:$("#store_id").val()
-                , latlng:$("#latlng").val()
-                , url:$("#url").val()
-                , icon:$("#icon").val()
-                , info:$("#info").val()
-            };
-            console.log("방금 등록" + store);
-            storeList.push(store);  //js의 배열을 java 안에서 java.util.list 와 유사
-
-            //유저가 입력한 위도경도 문자열을 ","를 기준으로 나누고 특히 공백이 들어있다면 공백도 제거하자
-            let arr = store.latlng.split(",");
-            
-            //기존의 위도경도를 가변적으로 바꾸겠다.
-            //parseFloat으로 인하여 "위도경도" 값의 ""를 제거 실수로 변경
-            let pos = new google.maps.LatLng(parseFloat(arr[0].trim()), parseFloat(arr[1].trim()));
-
-            addMarKer(map,pos,document.getElementById("pic").src,store.store_name+"<br>"+store.info);
+            addMarKer(map,mapProp.center,document.getElementById("pic").src);
         }
     </script>
 </head>
 <body>
     <div class="container">
         <div class="aside">
-            <input type="text" placeholder="상호명" id="store_id">
-            <input type="text" placeholder="위도,경도" id="latlng">
-            <input type="text" placeholder="URL" id="url">
+            <input type="text" placeholder="상호명">
+            <input type="text" placeholder="위도,경도">
+            <input type="text" placeholder="URL">
             <select id="icon" >
                 <option value="">마커선택</option>
             </select>
             <img id="pic">
-            <textarea id="info"></textarea>
+            <textarea></textarea>
             <button onclick="regist()">등록</button>
 
         </div>
         <div class="content" id="content"></div>
     </div>
-     <script src="https://maps.googleapis.com/maps/api/js?key=(자신의 구글키)&callback=init"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_C2YqeO_gtHtgc2eko-74gOR1ZP4OaL8&callback=init"></script>
 </body>
 </html>
