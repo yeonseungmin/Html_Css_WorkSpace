@@ -12,9 +12,49 @@
             쿠키의 유형)
             두가지 분류의 기준 : 유효기간을 지정한 (expires/ max-age)를 영구적 쿠키
             반대의 경우엔 세션쿠키(브라우저 프로세스가 종료되면 자동으로 삭제)
-                1)세션 쿠키
-                2)영구적 쿠키
+                1)세션 쿠키 - 저장소가 메모리이다.(브라우저 종료 시 삭제)
+                2)영구적 쿠키 - 저장소는 디스크이다.(정해진 기간동안 계속 살아있다.)
+
+            쿠키의 데이터 형식
+                - 쿠키에 넣는 모든 데이터는 문자열로 들어가 버린다. 따라서 쿠키에 들어간 특정 데이터를 추출하려면
+                    String 객체의 메서드 등을 활용..
+                
         */
+        document.cookie="name=동훈; max-age=2400";
+        document.cookie="email=네이버; max-age=2400";
+        document.cookie="name=지노; max-age=2400";
+
+
+        function getCookie(){
+            let arr = document.cookie.split("; ");
+            for(let i=0;i<arr.length;i++){
+                let kv=arr[i].split("=");
+                if(kv[0]=="email"){
+                    return kv[1];
+                }
+            }
+        }
+
+
+        /*
+            선언적 프로그래밍 - 예를 들어 반복문을 수행시 개발자로 하여금 반복의 과정을 제어하지말고..
+                            오히려 무엇을 할지에 집중할 수 있도록 프로그래밍 방식
+                            전통적방식 반복문 수행시 개발자 몇부터 ~몇까지 돌려라~
+                            선언적 프로그래밍 방식에서는 개발자 프로그래밍 언어에게 반복해라!!
+
+            함수형 프로그래밍 - 원본 데이터를 건드리지 않음 .. 
+                            배열 등 새로운 데이터를 반환하여 처리.. (원본은 유지)
+                            
+            고차함수 형 프로그래밍 - 매개변수로 함수를 받는게 가능한 함수정의법
+        */ 
+
+        //클린코드  // find 가 반복기능
+        function getCookie2(key){
+            return(document.cookie.split("; ")
+                .find(row=>row.startsWith(key))
+                .split("=")[1]
+            );
+        }
     </script>
 </head>
 <body>

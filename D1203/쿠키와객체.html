@@ -1,0 +1,47 @@
+<script src ="../lib/util.js">
+
+/*
+
+
+let member2="{id:'Donghun',eamil='naver', age=28}";
+document.cookie=`user=${member2} max-age=300`;
+
+결론
+    쿠키는 원칙 상 문자열만 넣을 수 있기 때문에 개발자가 주로 다루는 객체 자체를 넣을 수 없다!!
+    넣어도 "[object Object]" 라는 올바르지 않은, 가비지 값이 들어감.
+
+해결책
+    개발자가 다루고 있는 js 의 객체 리터럴을 일단 쌍따움표로 감싸서 문자열화 시켜
+    쿠키에 넣어야 한다. 하지만, 추후 쿠키를 담은 문자열화된 객체를 다시 객체로 복원을 시켜야하므로
+    
+    반드시!! JSON표기법을 따라야 한다.
+
+JSON 이란?
+    문자열이다.
+    단, 이 문자열 작성이 js의 객체 리터럴 표기법을 따른다고 하여 Java Script Object Notation이라 한다.
+
+*/
+/*
+let json="{\"id\":\"zino\",\"email\":\"daum\"}";
+json
+    '{"id":"zino","email":"daum"}'
+document.cookie="user="+json+"; max-age=300";
+    'user={"id":"zino","email":"daum"}; max-age=300'
+document.cookie;
+    'user={"id":"zino","email":"daum"}'
+getCookie2("user");
+    '{"id":"zino","email":"daum"}'
+let obj=getCookie2("user");
+    undefined
+obj;
+    '{"id":"zino","email":"daum"}'
+let m = JSON.parse(obj);
+    undefined
+m
+    {id: 'zino', email: 'daum'}
+m.email
+    'daum'
+
+*/
+
+</script>
