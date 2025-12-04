@@ -1,0 +1,16 @@
+<script>
+    //두가지 방법의 JSON 표기 변경법
+    let user ="{\"id\":\"batman\",\"name\":\"철수\",\"age\":30}";
+    console.log(user);
+
+    let user2 = {id:"batman",name:"철수",age:30};
+    let data = JSON.stringify(user2);
+    console.log(data);
+
+    //사용하기 위해 객체화
+    let obj = JSON.parse(user);
+    console.log(obj);
+
+    //다수의 객체 리터럴을 JSON 문자열로 다루는 법
+    
+</script>

@@ -1,0 +1,37 @@
+<script>
+    //let memberList=[문자,숫자,논리값,객체형];
+    
+    let memberList =[
+                        {
+                            id:"batman",
+                            name:"철수",
+                            age:30
+                        },
+                        {
+                            id:"antman",
+                            name:"영희",
+                            age:24,
+                            pets:[
+                                {
+                                    name:"동훈",
+                                    age:3,
+                                    type:"도베르만"
+                                },
+                                {
+                                    name:"태호",
+                                    age:2,
+                                    type:"페르시안"
+                                }
+                            ]
+                        },
+                        {
+                            id:"Xman",
+                            name:"민수",
+                            age:29
+                        }
+                    ];
+    //객체 리터럴 배열을 JSON 문자화
+    let data = JSON.stringify(memberList);
+    console.log(data);
+
+</script>
